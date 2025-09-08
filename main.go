@@ -109,7 +109,9 @@ func downloadPiece(p tracker.Peer, infoHash [20]byte, peerID string, tf *torrent
 }
 
 func main() {
-	tf, err := torrentfile.Open("debian-13.1.0-amd64-netinst.iso.torrent")
+	path := ""
+
+	tf, err := torrentfile.Open(path)
 	if err != nil {
 		panic(err)
 	}
@@ -198,3 +200,4 @@ func main() {
 	fmt.Printf("\nDownload completed successfully in %v\n", duration)
 	fmt.Printf("Average download speed: %.2f KB/s\n", float64(tf.Info.Length)/1024/duration.Seconds())
 }
+
